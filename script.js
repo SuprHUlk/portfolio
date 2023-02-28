@@ -1,0 +1,70 @@
+const hex=document.querySelector('.hex');
+let columns=0;
+let rows=0;
+let count=1;
+let toggle=false;
+// const colors=[
+//     "rgb(255, 0, 0)",
+//     "rgb(255, 238, 0)",
+//     "rgb(0, 255, 30)",
+//     "rgb(0, 200, 255)",
+//     "rgb(64, 0, 255)",
+//     "rgb(0, 0, 0)",
+// ];
+
+
+function handleOnClick(index) {
+    // count=count+1;
+    // if(count==colors.length) {
+    //     count=0;
+    // }
+    if(toggle) {
+        count=1;
+        toggle=false;
+    }
+    else {
+        count=0;
+        toggle=true;
+    }
+    console.log(count);
+    anime ({
+        targets: ".tile",
+        opacity: count,
+        // backgroundColor: colors[count],
+        delay: anime.stagger(50, {
+            grid: [columns, rows],
+            from: index
+        })
+    })
+}
+
+const createGrid=() => {
+    hex.innerHTML="";
+    columns=Math.floor(document.querySelector('.hex').clientWidth/50);
+    rows=Math.floor(document.querySelector('.hex').clientHeight/50);
+    hex.style.setProperty("--columns", columns);
+    hex.style.setProperty("--rows", rows);
+    createTiles( columns*rows );
+}
+
+const createTiles=quantity => {
+    Array.from(Array(quantity)).map((tile, index) => {
+        hex.appendChild(createTile(index));
+    })
+}
+
+const createTile=index => {
+    const tile=document.createElement("div");
+    tile.classList.add("tile");
+    tile.addEventListener("click", (e)=>{
+        handleOnClick(index)
+    })
+    return tile;
+}
+
+createGrid();
+window.onresize=() => createGrid();
+
+
+
+

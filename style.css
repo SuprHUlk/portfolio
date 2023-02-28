@@ -1,7 +1,155 @@
-* {
-    border: 1px solid red;
+:root {
+    --background-color-1: rgb(1, 1, 1);
+    --background-color-2: rgb(203, 201, 201);
+    --gradient1: rgb(98, 0, 234);
+    --gradient2: rgb(236, 64, 122);
+    --color-white: rgb(255, 255, 255);
 }
+
+*{
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+} 
 
 body {
-
+    background-color: var(--background-color-1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+nav {
+    color: #4A4A4A;
+    display: flex;
+    width: 100%;
+    border: 1px solid white;
+    border-top: 0;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.nav-element {
+    border-left: 1px solid #4A4A4A;
+}
+
+.logo {
+    padding: 2rem 10rem;
+}
+
+.about {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 10rem;
+}
+
+.link {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 7rem;
+}
+
+.contact-me {
+    padding: 2rem 10rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    margin: 1rem;
+    margin-top: 2rem;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    gap: 2rem;
+    row-gap: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content-element {
+}
+
+.panel-1 {
+    padding: 2rem 5rem;
+    color: var(--background-color-1);
+    background-color: var(--background-color-2);
+    /* transform: translateX() scaleX(0); */
+}
+
+h1{
+    font-size: 4vw;
+}
+
+h2 {
+    font-size: 3vw;
+}
+
+p {
+    margin-top: 1rem;
+    font-size: 1.4vw;
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+
+.hex {
+    display: grid;
+    grid-template: repeat(var(--rows), 1fr)/repeat(var(--columns), 1fr);
+    background: linear-gradient(to right, var(--gradient1), var(--gradient2), var(--gradient1));
+    background-size: 200%;
+    animation: background-pan 10s linear infinite;
+    gap: 0.1rem;
+    border: 0.1rem solid;
+    border-image-source: linear-gradient(to right, var(--gradient1), var(--gradient2), var(--gradient1));
+}
+
+.tile {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid transparent;
+}
+
+.tile:before {
+    background-color: rgb(20,20,20);
+    content: "";
+}
+
+.tile:hover {
+    opacity: 0.9;
+}
+
+.buttons {
+    display: flex;
+}
+
+.description {
+    background-color: var(--background-color-1);
+    color: var(--background-color-2);
+    font-family: 'Montserrat', sans-serif;
+    padding: 2rem 5rem;
+    padding-bottom: 1rem;
+    border: 1px solid var(--color-white);
+}
+
+button {
+    padding: 4rem 5.3rem;
+}
+
+#arrow-left {
+    transform: rotate(180deg);
+    font-size: xx-large;
+}
+
+#arrow-right {
+    font-size: xx-large;
+}
+
