@@ -1,4 +1,6 @@
-const hex=document.querySelector('.hex');
+const hex=document.querySelector(".hex");
+const leftArrow=document.querySelector(".btn-1");
+const rightArrow=document.querySelector(".btn-2");
 let columns=0;
 let rows=0;
 let count=1;
@@ -11,7 +13,6 @@ let toggle=false;
 //     "rgb(64, 0, 255)",
 //     "rgb(0, 0, 0)",
 // ];
-
 
 function handleOnClick(index) {
     // count=count+1;
@@ -26,14 +27,13 @@ function handleOnClick(index) {
         count=0;
         toggle=true;
     }
-    console.log(count);
     anime ({
         targets: ".tile",
         opacity: count,
         // backgroundColor: colors[count],
-        delay: anime.stagger(50, {
+        delay: anime.stagger(75, {
             grid: [columns, rows],
-            from: index
+            from: "center"
         })
     })
 }

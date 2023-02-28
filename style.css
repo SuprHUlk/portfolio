@@ -1,6 +1,6 @@
 :root {
     --background-color-1: rgb(1, 1, 1);
-    --background-color-2: rgb(203, 201, 201);
+    --background-color-2: rgb(212, 212, 212);
     --gradient1: rgb(98, 0, 234);
     --gradient2: rgb(236, 64, 122);
     --color-white: rgb(255, 255, 255);
@@ -30,27 +30,31 @@ nav {
 }
 
 .nav-element {
+    display: flex;
     border-left: 1px solid #4A4A4A;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {
-    padding: 2rem 10rem;
+    flex-basis: calc(100%/3);
 }
 
 .about {
     display: flex;
     gap: 1rem;
-    padding: 2rem 10rem;
+    flex-basis: calc(100%/3);
 }
 
 .link {
     display: flex;
     gap: 1rem;
-    padding: 2rem 7rem;
+    flex-grow: 1;
 }
 
 .contact-me {
-    padding: 2rem 10rem;
+    flex-grow: 1;
 }
 
 a {
@@ -70,8 +74,8 @@ a {
     font-family: 'Montserrat', sans-serif;
 }
 
-.content-element {
-}
+/* .content-element {
+} */
 
 .panel-1 {
     padding: 2rem 5rem;
@@ -135,8 +139,7 @@ p {
     background-color: var(--background-color-1);
     color: var(--background-color-2);
     font-family: 'Montserrat', sans-serif;
-    padding: 2rem 5rem;
-    padding-bottom: 1rem;
+    padding: 1.5rem 5rem;
     border: 1px solid var(--color-white);
 }
 
