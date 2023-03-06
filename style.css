@@ -1,6 +1,7 @@
 :root {
     --background-color-1: rgb(1, 1, 1);
     --background-color-2: rgb(212, 212, 212);
+    --border-color-1: rgb(74, 74, 74);
     --gradient1: rgb(98, 0, 234);
     --gradient2: rgb(236, 64, 122);
     --color-white: rgb(255, 255, 255);
@@ -21,7 +22,7 @@ body {
 }
 
 nav {
-    color: #4A4A4A;
+    color: var(--border-color-1);
     display: flex;
     width: 100%;
     border: 1px solid white;
@@ -31,7 +32,7 @@ nav {
 
 .nav-element {
     display: flex;
-    border-left: 1px solid #4A4A4A;
+    border-left: 1px solid var(--border-color-1);
     padding: 2rem;
     align-items: center;
     justify-content: center;
@@ -122,13 +123,17 @@ p {
     border: 1px solid transparent;
 }
 
-.tile:before {
+/* .tile:before {
     background-color: rgb(20,20,20);
     content: "";
-}
+} */
 
 .tile:hover {
-    opacity: 0.9;
+    background-color: rgb(20,20,20);
+}
+
+.hex.toggled > .tile:hover {
+    opacity: 0.1 !important;
 }
 
 .buttons {
@@ -148,11 +153,24 @@ button {
 }
 
 #arrow-left {
-    transform: rotate(180deg);
     font-size: xx-large;
+    transform: scale(120%) rotate(180deg);
+    transition-duration: 250ms;
 }
 
 #arrow-right {
     font-size: xx-large;
+    transform: scale(120%);
+    transition-duration: 250ms;
+}
+
+.btn-1:hover #arrow-left {
+    transform:  rotate(180deg) scale(120%) translateX(50%);
+    transition-duration: 250ms;
+}
+
+.btn-2:hover #arrow-right {
+    transform: scale(120%) translate(50%);
+    transition-duration: 250ms;
 }
 

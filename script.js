@@ -22,10 +22,12 @@ function handleOnClick(index) {
     if(toggle) {
         count=1;
         toggle=false;
+        document.querySelector(".hex").classList.toggle("toggled");
     }
     else {
         count=0;
         toggle=true;
+        document.querySelector(".hex").classList.toggle("toggled");
     }
     anime ({
         targets: ".tile",
@@ -33,7 +35,7 @@ function handleOnClick(index) {
         // backgroundColor: colors[count],
         delay: anime.stagger(75, {
             grid: [columns, rows],
-            from: "center"
+            from: index
         })
     })
 }
