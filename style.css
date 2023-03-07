@@ -75,14 +75,25 @@ a {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* .content-element {
-} */
+.wrapper {
+    overflow: hidden;
+    color: var(--background-color-1);
+    background-color: var(--background-color-2);
+}
 
-.panel-1 {
+.panels {
+    display: grid;
+    grid-template-columns: 1fr;
+    transition: transform 250ms ease-in;
+}
+
+.panel {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    position: relative;
     padding: 2rem 5rem;
     color: var(--background-color-1);
     background-color: var(--background-color-2);
-    /* transform: translateX() scaleX(0); */
 }
 
 h1{

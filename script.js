@@ -1,6 +1,9 @@
 const hex=document.querySelector(".hex");
-const leftArrow=document.querySelector(".btn-1");
-const rightArrow=document.querySelector(".btn-2");
+const leftBtn=document.querySelector(".btn-1");
+const rightBtn=document.querySelector(".btn-2");
+const panels=document.querySelector(".panels");
+const panel=Array.from(panels.children);
+const width=panel[0].getBoundingClientRect().width;
 let columns=0;
 let rows=0;
 let count=1;
@@ -67,6 +70,27 @@ const createTile=index => {
 createGrid();
 window.onresize=() => createGrid();
 
+const setPanelPosition=(panel, index) => {
+    panel.style.left=index*100+"%";
+}
+
+panel.forEach(setPanelPosition);
+
+const movePanel=(panels, currentPanel, targetPanel) => {
+    panels.style.transform="translateX(-"+targetPanel.style.left+")";
+    currentPanel.classList.remove("current-panel");
+    targetPanel.classList.add("current-panel");
+}
+
+leftBtn.addEventListener('click', e => {
+    const currentPanel=panels.querySelector(".current-panel");
+    const prevPanel=currentPanel.previousElementSibling;
+    movePanel(panels, currentPanel, prevPanel);
+})
 
 
-
+rightBtn.addEventListener('click', e => {
+    const currentPanel=panels.querySelector(".current-panel");
+    const nextPanel=currentPanel.nextElementSibling;
+    movePanel(panels, currentPanel, nextPanel);
+})
