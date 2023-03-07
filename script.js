@@ -3,7 +3,7 @@ const leftBtn=document.querySelector(".btn-1");
 const rightBtn=document.querySelector(".btn-2");
 const panels=document.querySelector(".panels");
 const panel=Array.from(panels.children);
-const width=panel[0].getBoundingClientRect().width;
+
 let columns=0;
 let rows=0;
 let count=1;
