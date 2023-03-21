@@ -2,7 +2,13 @@ const hex=document.querySelector(".hex");
 const leftBtn=document.querySelector(".btn-1");
 const rightBtn=document.querySelector(".btn-2");
 const panels=document.querySelector(".panels");
+const descriptions=document.querySelector(".descriptions");
 const panel=Array.from(panels.children);
+const description=Array.from(descriptions.children);
+
+/*
+   HEX LOGIC STARTS
+*/
 
 let columns=0;
 let rows=0;
@@ -70,11 +76,24 @@ const createTile=index => {
 createGrid();
 window.onresize=() => createGrid();
 
+/*
+   HEX LOGIC ENDS
+*/
+
+/*
+   CAROUSEL LOGIC STARTS
+*/
+
 const setPanelPosition=(panel, index) => {
     panel.style.left=index*100+"%";
 }
 
+const setDescriptionPosition=(description, index) => {
+    description.style.left=index*100+"%";
+}
+
 panel.forEach(setPanelPosition);
+description.forEach(setDescriptionPosition);
 
 const movePanel=(panels, currentPanel, targetPanel) => {
     panels.style.transform="translateX(-"+targetPanel.style.left+")";
@@ -82,15 +101,54 @@ const movePanel=(panels, currentPanel, targetPanel) => {
     targetPanel.classList.add("current-panel");
 }
 
+const movePanelIfLast=(panels, currentPanel, targetPanel, value) => {
+    panels.style.transform="translateX("+value+"%)";
+    currentPanel.classList.remove("current-panel");
+    targetPanel.classList.add("current-panel");
+}
+
+const moveDescription=(descriptions, currentDescription, targetDescription) => {
+    descriptions.style.transform="translateX(-"+targetDescription.style.left+")";
+    currentDescription.classList.remove("current-description");
+    targetDescription.classList.add("current-description");
+}
+
+const moveDescriptionIfLast=(descriptions, currentDescription, targetDescription, value) => {
+    descriptions.style.transform="translateX("+value+"%)";
+    currentDescription.classList.remove("current-description");
+    targetDescription.classList.add("current-description");
+}
+
 leftBtn.addEventListener('click', e => {
     const currentPanel=panels.querySelector(".current-panel");
     const prevPanel=currentPanel.previousElementSibling;
-    movePanel(panels, currentPanel, prevPanel);
+    const currentDescription=descriptions.querySelector(".current-description");
+    const prevDescription=currentDescription.previousElementSibling;
+    if(prevPanel !== null) {
+        movePanel(panels, currentPanel, prevPanel);
+        moveDescription(descriptions, currentDescription, prevDescription);
+    }
+    else {
+        movePanelIfLast(panels, currentPanel, panels.lastElementChild, -200); 
+        moveDescriptionIfLast(descriptions, currentDescription, descriptions.lastElementChild, -200);
+    }
 })
-
 
 rightBtn.addEventListener('click', e => {
     const currentPanel=panels.querySelector(".current-panel");
     const nextPanel=currentPanel.nextElementSibling;
-    movePanel(panels, currentPanel, nextPanel);
+    const currentDescription=descriptions.querySelector(".current-description");
+    const nextDescription=currentDescription.nextElementSibling;
+    if(nextPanel !== null) {
+        movePanel(panels, currentPanel, nextPanel);
+        moveDescription(descriptions, currentDescription, nextDescription);
+    }
+    else {
+        movePanelIfLast(panels, currentPanel, panels.firstElementChild, 0);
+        moveDescriptionIfLast(descriptions, currentDescription, descriptions.firstElementChild, 0);
+    }
 })
+
+/*
+   CAROUSEL LOGIC ENDS
+*/
