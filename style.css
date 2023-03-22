@@ -2,6 +2,7 @@
     --background-color-1: rgb(1, 1, 1);
     --background-color-2: rgb(212, 212, 212);
     --border-color-1: rgb(74, 74, 74);
+    --border-color-2: rgb(212, 212, 212);
     --gradient1: rgb(98, 0, 234);
     --gradient2: rgb(236, 64, 122);
     --color-white: rgb(255, 255, 255);
@@ -32,7 +33,7 @@ nav {
 
 .nav-element {
     display: flex;
-    border-left: 1px solid var(--border-color-1);
+    border-left: 1px solid var(--border-color-2);
     padding: 2rem;
     align-items: center;
     justify-content: center;
@@ -97,29 +98,16 @@ a {
     min-height: 51.8vh;
 }
 
-/* .panel-2 {
-    background-image: url(./images/prj-1.png);
-    background-size: 70% 50%;
-    background-repeat: no-repeat;
-    background-position: 25% 75%;
-} */
-
-.img.project-1 {
+.img {
     display: flex;
     gap: 5%;
     padding-top: 3%;
 }
 
-.img.project-1 > img {
+.img > img {
     max-height: 12rem;
     max-width: 1000rem;
 }
-
-/* .img-1 {
-    background-image: url(./images/img-1.png);
-    z-index: 1;
-
-} */
 
 h1{
     font-size: 4vw;
@@ -197,13 +185,65 @@ p {
     padding: 1.5rem 5rem;
 }
 
-.description-2 {
+.common {
     display: flex;
-    gap: 10%;
+    gap: 5%;
+    padding-right: 2.5rem;
 }
 
-.btn-3 {
+.common > .wrapper {
+    overflow: hidden;
+    display: grid;
+}
+
+.wrapper-content {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    position: relative;
+}
+
+.text {
+    bottom: 0%;
+    transition: 500ms ease;
+}
+
+.common:hover .text {
+    bottom: 100%;
+    transition: 500ms ease;
+}
+
+.common:hover .show-project {
+    top: 0%;
+    transition: 500ms ease;
+}
+
+.show-project {
+    top: 100%;
+    /* background-color: black; */
+    transition: 500ms ease;
+}
+
+#link-1 {
+    border-right: 1px solid var(--background-color-2);
+    padding-right: 1%;
+}
+
+.btn-rotate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
     padding: 0;
+    border: none;
+    margin: 0;
+    max-width: 50%;
+    max-height: 100%;
+    transition: 500ms ease;
+}
+
+.common:hover .btn-rotate {
+    transform: rotate(90deg);
+    transition: 500ms ease;
 }
 
 button {
@@ -213,22 +253,21 @@ button {
 #arrow-left {
     font-size: xx-large;
     transform: scale(120%) rotate(180deg);
-    transition-duration: 250ms;
+    transition: 250ms ease;
 }
 
 #arrow-right {
     font-size: xx-large;
     transform: scale(120%);
-    transition-duration: 250ms;
+    transition: 250ms ease;
 }
 
 .btn-1:hover #arrow-left {
     transform:  rotate(180deg) scale(120%) translateX(50%);
-    transition-duration: 250ms;
+    transition: 250ms ease;
 }
 
 .btn-2:hover #arrow-right {
     transform: scale(120%) translate(50%);
-    transition-duration: 250ms;
+    transition: 250ms ease;
 }
-

@@ -6,9 +6,9 @@ const descriptions=document.querySelector(".descriptions");
 const panel=Array.from(panels.children);
 const description=Array.from(descriptions.children);
 
-/*
+/*****
    HEX LOGIC STARTS
-*/
+*****/
 
 let columns=0;
 let rows=0;
@@ -76,13 +76,13 @@ const createTile=index => {
 createGrid();
 window.onresize=() => createGrid();
 
-/*
+/*****
    HEX LOGIC ENDS
-*/
+*****/
 
-/*
+/***** 
    CAROUSEL LOGIC STARTS
-*/
+*****/
 
 const setPanelPosition=(panel, index) => {
     panel.style.left=index*100+"%";
@@ -149,6 +149,6 @@ rightBtn.addEventListener('click', e => {
     }
 })
 
-/*
+/*****
    CAROUSEL LOGIC ENDS
-*/
+*****/
