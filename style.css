@@ -26,14 +26,13 @@ nav {
     color: var(--border-color-1);
     display: flex;
     width: 100%;
-    border: 1px solid white;
-    border-top: 0;
+    border-bottom: 1px solid white;
     font-family: 'Space Grotesk', sans-serif;
 }
 
 .nav-element {
     display: flex;
-    border-left: 1px solid var(--border-color-2);
+    border-right: 1px solid var(--border-color-2);
     padding: 2rem;
     align-items: center;
     justify-content: center;
@@ -56,6 +55,7 @@ nav {
 }
 
 .contact-me {
+    border: none;
     flex-grow: 1;
 }
 
