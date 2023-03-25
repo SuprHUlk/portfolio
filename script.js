@@ -85,11 +85,11 @@ window.onresize=() => createGrid();
 *****/
 
 const setPanelPosition=(panel, index) => {
-    panel.style.left=index*100+"%";
+    panel.style.left=index*100+"vw";
 }
 
 const setDescriptionPosition=(description, index) => {
-    description.style.left=index*100+"%";
+    description.style.left=index*100+"vw";
 }
 
 panel.forEach(setPanelPosition);
@@ -102,7 +102,7 @@ const movePanel=(panels, currentPanel, targetPanel) => {
 }
 
 const movePanelIfLast=(panels, currentPanel, targetPanel, value) => {
-    panels.style.transform="translateX("+value+"%)";
+    panels.style.transform="translateX("+value+"vw)";
     currentPanel.classList.remove("current-panel");
     targetPanel.classList.add("current-panel");
 }
@@ -114,7 +114,7 @@ const moveDescription=(descriptions, currentDescription, targetDescription) => {
 }
 
 const moveDescriptionIfLast=(descriptions, currentDescription, targetDescription, value) => {
-    descriptions.style.transform="translateX("+value+"%)";
+    descriptions.style.transform="translateX("+value+"vw)";
     currentDescription.classList.remove("current-description");
     targetDescription.classList.add("current-description");
 }
