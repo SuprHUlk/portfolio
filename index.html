@@ -18,21 +18,27 @@
             <div class="logo nav-element">
                 LOGO
             </div>
-            <div class="about nav-element">
-                <a href="#">ABOUT</a>
-                <a href="https://github.com/suprhulk" target="_blank" rel="noopener noreferrer">WORK</a>
+            <div id="nav-mobile">
+                <div class="about nav-element">
+                    <a href="#">ABOUT</a>
+                    <a href="https://github.com/suprhulk" target="_blank" rel="noopener noreferrer">WORK</a>
+                </div>
+                <div class="link nav-element">
+                    <a href="https://www.linkedin.com/in/ayush-kumar-75265024a/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/i_m_ayush._/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWskgF8Ys1DpQ8uUuad99fw" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="contact-me  nav-element">
+                    <a href="#">CONTACT ME</a>
+                </div>
             </div>
-            <div class="link nav-element">
-                <a href="https://www.linkedin.com/in/ayush-kumar-75265024a/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/i_m_ayush._/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCWskgF8Ys1DpQ8uUuad99fw" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-            <div class="contact-me  nav-element">
-                <a href="#">CONTACT ME</a>
-            </div>
+            <button id="nav-toggle-button" type="button" onclick="handleNavToggle()">
+                <span>Menu</span>
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
         <div class="content">
-            <div class="wrapper-panels">
+            <div class="wrapper-panels content-element">
                 <div class="panels">
                     <div class="panel panel-1 current-panel">
                         <h1>Hello!</h1><h2>WELCOME TO MY PORTFOLIO</h2>
@@ -56,8 +62,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="hex content-element"></div>
-            <div class="wrapper-descriptions">
+
+            <div class="wrapper-descriptions content-element">
                 <div class="descriptions">
                     <div class="description description-1 current-description">
                         <h4>Languages</h4>
