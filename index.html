@@ -14,11 +14,15 @@
         <title>About me</title>
     </head>
     <body>
+        <button id="nav-toggle-button" type="button">
+            <span>Menu</span>
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <nav>
             <div class="logo nav-element">
                 LOGO
             </div>
-            <div id="nav-mobile">
+            <div data-visible="false" id="nav-mobile">
                 <div class="about nav-element">
                     <a href="#">ABOUT</a>
                     <a href="https://github.com/suprhulk" target="_blank" rel="noopener noreferrer">WORK</a>
@@ -32,10 +36,6 @@
                     <a href="#">CONTACT ME</a>
                 </div>
             </div>
-            <button id="nav-toggle-button" type="button" onclick="handleNavToggle()">
-                <span>Menu</span>
-                <i class="fa-solid fa-bars"></i>
-            </button>
         </nav>
         <div class="content">
             <div class="wrapper-panels content-element">

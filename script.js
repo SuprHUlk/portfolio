@@ -152,3 +152,17 @@ rightBtn.addEventListener('click', e => {
 /*****
    CAROUSEL LOGIC ENDS
 *****/
+
+
+const navMobile = document.querySelector("#nav-mobile");
+const navToggle = document.querySelector("#nav-toggle-button");
+
+navToggle.addEventListener("click", () => {
+    const checkVisibility=navMobile.getAttribute("data-visible");
+    if(checkVisibility=="false") {
+        navMobile.setAttribute("data-visible", "true");
+    }
+    else {
+        navMobile.setAttribute("data-visible", "false");
+    }
+})
