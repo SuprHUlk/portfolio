@@ -1,6 +1,7 @@
 :root {
     --background-color-1: rgb(1, 1, 1);
     --background-color-2: rgb(212, 212, 212);
+    --background-color-3: rgba(0, 0, 0, 0.7);
     --border-color-1: rgb(74, 74, 74);
     --border-color-2: rgb(212, 212, 212);
     --gradient1: rgb(98, 0, 234);
@@ -38,8 +39,49 @@ nav {
 #nav-mobile {
     display: flex;
     flex-basis: calc(100%*(2 / 3));
-    /* z-index: 2; */
 }
+
+/*****
+   CONTACT ME STARTS
+*****/
+
+/* .contact {
+    display: none;
+    color: white;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 100;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--background-color-3);
+}
+
+.contact[data-visible="true"] {
+    display: block;
+}
+
+.contact > .wrapper {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 25%;
+    max-width: 50%;
+    transform: translateX(50%);
+    background-color: var(--background-color-1);
+    border: 1px solid red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+} */
+
+/*****
+   CONTACT ME ENDS
+*****/
 
 .nav-element {
     display: flex;
@@ -48,13 +90,6 @@ nav {
     align-items: center;
     justify-content: center;
 }
-/* 
-#nav-toggle-button {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-
-} */
 
 .logo {
     flex-basis: calc(100%/3);
@@ -75,6 +110,10 @@ nav {
 .contact-me {
     border: none;
     flex-grow: 1;
+}
+
+.contact-me > a {
+    cursor: pointer;
 }
 
 a {
@@ -319,12 +358,12 @@ button {
         border: none;
         overflow-y: hidden;
         transform: translateY(-100%) ;
-        transition: 250ms ease;
+        transition: 500ms ease-in;
     }
 
     #nav-mobile[data-visible="true"] {
         transform: translateY(0%);
-        transition: 250ms ease;
+        transition: 500ms ease-out;
     }
 
     #nav-mobile > .nav-element {
@@ -366,7 +405,6 @@ button {
 
     .panel.common > h3 {
         display: inline-block;
-
     }
 
     .panel.common > h3::after {
@@ -400,6 +438,7 @@ button {
         grid-template-rows: 0.6fr 0.4fr 0.1fr;
         font-family: 'Montserrat', sans-serif;
         gap: 0;  
+        /* max-height: 100vh; */
     }
 
     .wrapper-panels {

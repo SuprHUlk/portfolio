@@ -5,6 +5,8 @@ const panels=document.querySelector(".panels");
 const descriptions=document.querySelector(".descriptions");
 const panel=Array.from(panels.children);
 const description=Array.from(descriptions.children);
+const navMobile = document.querySelector("#nav-mobile");
+const navToggle = document.querySelector("#nav-toggle-button");
 
 /*****
    HEX LOGIC STARTS
@@ -153,9 +155,9 @@ rightBtn.addEventListener('click', e => {
    CAROUSEL LOGIC ENDS
 *****/
 
-
-const navMobile = document.querySelector("#nav-mobile");
-const navToggle = document.querySelector("#nav-toggle-button");
+/*****
+   MOBILE NAV LOGIC STARTS
+*****/
 
 navToggle.addEventListener("click", () => {
     const checkVisibility=navMobile.getAttribute("data-visible");
@@ -165,4 +167,22 @@ navToggle.addEventListener("click", () => {
     else {
         navMobile.setAttribute("data-visible", "false");
     }
-})
+});
+
+/*****
+   MOBILE NAV LOGIC ENDS
+*****/
+
+// const contactMe = document.querySelector(".contact-me > a");
+// const contact = document.querySelector(".contact");
+// console.log(contactMe);
+
+// contactMe.addEventListener("click", ()=>{
+//     // const checkVisibility=;
+//     if(contact.getAttribute("data-visible")=="false") {
+//         contact.setAttribute("data-visible", "true");
+//     }
+//     else {
+//         contact.setAttribute("data-visible", "false");
+//     }
+// });
