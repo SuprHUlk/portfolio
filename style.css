@@ -308,16 +308,16 @@ button {
     }
 
     h1{
-        font-size: 10vw;
+        font-size: clamp(2.31rem, calc(-20.49rem + 97.30vw), 4.56rem);
     }
     
     h2 {
-        font-size: 5vw;
+        font-size: clamp(1.17rem, calc(-0.25rem + 6.05vw), 1.31rem);
     }
     
     p {
         margin-top: 0.5rem;
-        font-size: 3vw;
+        font-size:clamp(0.70rem, calc(-2.60rem + 14.11vw), 1.03rem);
     }
 
     .panel.common > h3 {
@@ -377,21 +377,21 @@ button {
     }
 
     .description > h4 {
-        font-size: 3vw;
+        font-size: clamp(0.70rem, calc(-2.60rem + 14.11vw), 1.03rem);
     }
 
     .description > p {
         margin-top: 0.5rem;
-        font-size: 4vw;
+        font-size: clamp(0.94rem, calc(-3.91rem + 20.68vw), 1.42rem);
     }
 
     .wrapper-content > h4 {
-        font-size: 3vw;
+        font-size: clamp(0.70rem, calc(-2.08rem + 11.89vw), 0.98rem);
     }
 
     .wrapper-content > p {
         margin-top: 0.5rem;
-        font-size: 3.5vw;
+        font-size: clamp(0.82rem, calc(-2.61rem + 14.62vw), 1.16rem);
     }
 
     .description {
