@@ -28,7 +28,7 @@ nav {
     color: var(--border-color-1);
     display: flex;
     width: 100%;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid hsl(324, 100%, 39%);
     font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -45,7 +45,7 @@ nav {
    CONTACT ME STARTS
 *****/
 
-/* .contact {
+.contact {
     display: none;
     color: white;
     position: absolute;
@@ -62,22 +62,168 @@ nav {
     display: block;
 }
 
-.contact > .wrapper {
+/* .contact > .wrapper {
     position: absolute;
     right: 0;
     left: 0;
     top: 25%;
-    max-width: 50%;
-    transform: translateX(50%);
+    max-width: 35rem;
+    transform: translateX(76%);
     background-color: var(--background-color-1);
     border: 1px solid red;
+} */
+
+.contact > .wrapper {
+    transform: translateX(83%) translateY(20%);
+    background-color: var(--background-color-1);
+    max-width: 35rem;
+    border: 1px solid hsl(324, 100%, 39%);
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    padding: 3%;
+    gap: 10px;
+    max-height: 28rem;
+    max-width: 40rem;
+}
 
-} */
+form > .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+form > .heading > h3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 100;
+    font-size: xx-large;
+    color: white;
+}
+
+form > .heading > .submit {
+    overflow: hidden;
+    display: grid;
+}
+
+form > .heading > .submit > .wrapper {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    position: relative;
+}
+
+form > .heading > .submit > .wrapper > i {
+    color: white;
+    font-size: x-large;
+    position: relative;
+    cursor: pointer;
+    top: 20%;
+}
+
+form > .heading > .submit > .wrapper > p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 100;
+    color: white;
+    position: relative;
+    top: 100%;
+}
+
+.text {
+    bottom: 0%;
+    transition: 500ms ease;
+}
+
+form > .heading > i {
+    font-size: x-large;
+    cursor: pointer;
+}
+
+hr {
+    height: 1px;
+    background-color: #c70077;
+    border: none;
+}
+
+.grid {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 1.5fr 2fr;
+}
+
+.personal-info {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5%;
+    padding-top: 2%;
+    padding-bottom: 4%;
+}
+
+.work-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 17%;
+    width: 100%;
+    padding-bottom: 7%;
+}
+
+.message {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.message > .input-group > input {
+    min-height: 8rem;
+}
+
+.input-group {
+    position: relative;
+    /* border: 1px solid red; */
+}
+   
+.input {
+    border: solid 1.5px #9e9e9e;
+    border-radius: 5px;
+    background: white;
+    padding: 1rem;
+    font-size: 1rem;
+    color: black;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+    width: 100%;
+}
+   
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: black;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+    font-family: 'Space Grotesk', sans-serif;
+}
+   
+.input:focus, input:valid {
+    outline: none;
+    border: 1.5px solid #1a73e8;
+}
+   
+.input:focus ~ label, input:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: black;
+    padding: 0 .2em;
+    color: hsl(324, 100%, 39%);
+}
 
 /*****
    CONTACT ME ENDS
@@ -85,7 +231,7 @@ form {
 
 .nav-element {
     display: flex;
-    border-right: 1px solid var(--border-color-2);
+    border-right: 1px solid hsl(324, 100%, 39%);
     padding: 2rem;
     align-items: center;
     justify-content: center;
@@ -156,6 +302,11 @@ a {
     min-height: 51.8vh;
 }
 
+.panels>.common>h3, .panels>.panel>h1, span {
+    /* color: #8a0053; */
+    color: hsl(334, 71%, 55%);
+}
+
 .img {
     display: flex;
     gap: 5%;
@@ -220,7 +371,7 @@ p {
 
 .wrapper-descriptions {
     overflow: hidden;
-    border: 1px solid var(--color-white);
+    border: 1px solid hsl(324, 100%, 39%);
 }
 
 .descriptions {
@@ -228,6 +379,10 @@ p {
     grid-template-columns: 1fr;
     transition: transform 250ms ease-in;
     min-width: 100%;
+}
+
+.descriptions>.description-1>h4 {
+    color: hsl(324, 100%, 39%);
 }
 
 .description {
@@ -260,6 +415,10 @@ p {
 .text {
     bottom: 0%;
     transition: 500ms ease;
+}
+
+.text>h4, .show-project>h4 {
+    color: hsl(324, 100%, 39%);
 }
 
 .description.common:hover .text {
@@ -302,6 +461,7 @@ p {
 
 button {
     padding: 4rem 5.3rem;
+    color: hsl(324, 100%, 39%);
 }
 
 .buttons {
@@ -334,6 +494,10 @@ button {
 
 @media only screen and (max-width: 550px) {
 
+    body {
+        overflow: scroll;
+    }
+
     #nav-toggle-button {
         position: absolute;
         z-index: 5;
@@ -344,6 +508,19 @@ button {
         background-color: transparent;
         color: white;
         border: none;
+    }
+
+    #nav-toggle-button > span {
+        color: white
+    }
+
+    nav {
+        background-color: hsl(324, 100%, 39%); 
+        border-bottom: none;
+    }
+
+    nav > .logo {
+        background-color: black;
     }
     
     #nav-mobile {
@@ -366,8 +543,17 @@ button {
         transition: 500ms ease-out;
     }
 
+    #nav-toggle-button:active #nav-toggle-button > span {
+        color: red;
+    }
+
     #nav-mobile > .nav-element {
         border: none;
+    }
+
+    #nav-mobile > .link > a {
+        border: none;
+        color: hsl(324, 100%, 39%);
     }
     
     .logo {
@@ -390,7 +576,7 @@ button {
         max-width: 100vw;
     }
 
-    h1{
+    h1 {
         font-size: clamp(2.31rem, calc(-20.49rem + 97.30vw), 4.56rem);
     }
     
@@ -487,7 +673,7 @@ button {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        border: none;
+        border: none; 
     }
 
     #arrow-left {

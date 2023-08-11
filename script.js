@@ -173,16 +173,20 @@ navToggle.addEventListener("click", () => {
    MOBILE NAV LOGIC ENDS
 *****/
 
-// const contactMe = document.querySelector(".contact-me > a");
-// const contact = document.querySelector(".contact");
-// console.log(contactMe);
+const contactMe = document.querySelector(".contact-me > a");
+const contact = document.querySelector(".contact");
+const i = document.querySelector("form > .heading > .submit > .wrapper > i");
+console.log(contactMe);
 
-// contactMe.addEventListener("click", ()=>{
-//     // const checkVisibility=;
-//     if(contact.getAttribute("data-visible")=="false") {
-//         contact.setAttribute("data-visible", "true");
-//     }
-//     else {
-//         contact.setAttribute("data-visible", "false");
-//     }
-// });
+contactMe.addEventListener("click", ()=>{
+    // const checkVisibility=;
+    if(contact.getAttribute("data-visible")=="false") {
+        contact.setAttribute("data-visible", "true");
+    }
+});
+
+i.addEventListener("click", ()=>{
+    if(contact.getAttribute("data-visible")=="true") {
+        contact.setAttribute("data-visible", "false");
+    }
+})
