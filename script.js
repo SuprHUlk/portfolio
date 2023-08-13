@@ -175,18 +175,29 @@ navToggle.addEventListener("click", () => {
 
 const contactMe = document.querySelector(".contact-me > a");
 const contact = document.querySelector(".contact");
-const i = document.querySelector("form > .heading > .submit > .wrapper > i");
-console.log(contactMe);
+const close = document.querySelector("form > .heading > .submit > .wrapper > #close");
+const send = document.querySelector("form > .heading > .submit > .wrapper > #send");
 
 contactMe.addEventListener("click", ()=>{
-    // const checkVisibility=;
-    if(contact.getAttribute("data-visible")=="false") {
+    if(contact.getAttribute("data-visible")=="false"&&window.innerWidth>550) {
         contact.setAttribute("data-visible", "true");
+    }
+    else {
+        var recipient='ayush123kumar.ak@gmail.com';
+        var subject="";
+        var body="";
+        window.location.href = 'mailto:' + encodeURIComponent(recipient)+
+            '?subject='+encodeURIComponent(subject)+
+            '&body=' + encodeURIComponent(body);
     }
 });
 
-i.addEventListener("click", ()=>{
+close.addEventListener("click", ()=>{
     if(contact.getAttribute("data-visible")=="true") {
         contact.setAttribute("data-visible", "false");
     }
+})
+
+send.addEventListener("click", ()=>{
+    
 })
