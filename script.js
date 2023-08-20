@@ -192,12 +192,17 @@ contactMe.addEventListener("click", ()=>{
     }
 });
 
-close.addEventListener("click", ()=>{
+close.addEventListener("click", handleClose)
+
+send.addEventListener("click", ()=>{
+    const form = document.querySelector("form");
+    form.submit();
+    handleClose();
+})
+
+
+function handleClose() {
     if(contact.getAttribute("data-visible")=="true") {
         contact.setAttribute("data-visible", "false");
     }
-})
-
-send.addEventListener("click", ()=>{
-    
-})
+}
