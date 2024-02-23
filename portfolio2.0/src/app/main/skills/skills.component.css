@@ -1,0 +1,34 @@
+.container {
+  background-color: var(--md-sys-color-background);
+
+  min-width: 100%;
+  min-height: 100%;
+
+  border-radius: 2rem;
+
+  padding: 4rem 5rem 5rem 5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  color: aliceblue;
+}
+
+h1, h2, p {
+  font-family: var(--my-head-font);
+}
+
+span {
+  color: var(--md-sys-color-primary);
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+}
+
+md-outlined-button {
+  min-width: 15%;
+}

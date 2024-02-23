@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="header">
+    <p id="name"
+      style="
+        margin: 0;
+        font-size: xx-large;
+        font-family: var(--my-head-font);
+        color: var(--md-sys-color-primary);"
+        >
+        SuprHUlk
+    </p>
+
+    <div class="menu">
+      <md-filled-button  (click)="pageChange('about')">About</md-filled-button>
+      <md-filled-button (click)="pageChange('skills')">Skills</md-filled-button>
+    </div>
+
+  </div>
+  <div class="side-nav">
+
+    <md-list style="max-width: 300px;">
+      <md-list-item (click)="pageChange('about')">
+        <p>About</p>
+        <md-ripple></md-ripple>
+      </md-list-item>
+      <md-list-item (click)="pageChange('skills')">
+        <p>Skills</p>
+        <md-ripple></md-ripple>
+      </md-list-item>
+    </md-list>
+
+  </div>
+
+  <div class="body">
+    <div class="pages">
+      <app-about class="page about current-page"></app-about>
+      <app-skills class="page skills"></app-skills>
+    </div>
+  </div>
+
+</div>
