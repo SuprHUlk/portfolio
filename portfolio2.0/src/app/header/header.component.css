@@ -1,0 +1,52 @@
+.header-wrapper {
+  /* border: 1px solid red; */
+  background-color: #333;
+  cursor: crosshair;
+  background-color: black;
+  color: white;
+
+  font-family: "Roboto", sans-serif;
+
+  display: flex;
+}
+
+.hero-heading > h1 {
+  font-size: 7em;
+  font-weight: 200;
+}
+
+.work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.job,
+.location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  border-radius: 5px;
+
+  flex: 1;
+}
+
+.title {
+  font-size: medium;
+  font-weight: 500;
+}
+
+.activity {
+  font-size: medium;
+  font-weight: 500;
+}
+
+.activity {
+  width: 40%;
+  border: 1px solid red;
+}
