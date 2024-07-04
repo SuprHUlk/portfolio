@@ -4,6 +4,7 @@
 html,
 body {
   height: 100%;
+  cursor: crosshair;
 }
 body {
   margin: 0;
@@ -16,13 +17,8 @@ body {
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: PPMori-Regular;
-  src: url(../public/fonts/PPMori-Regular.otf) format("opentype");
-}
-
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
   color: white;
 }
 
@@ -33,7 +29,19 @@ h4,
 h5,
 h6,
 p {
-  /* font-family: PPMori-Regular, sans-serif;
-  font-weight: 400; */
+  font-family: "Roboto", sans-serif;
   margin: 0;
+  color: white;
+}
+
+p.title {
+  font-size: medium;
+  font-weight: 500;
+}
+
+p.description {
+  color: #7c7c83;
+
+  font-size: medium;
+  font-weight: 400;
 }

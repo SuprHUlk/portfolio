@@ -1,13 +1,15 @@
 .header-wrapper {
   /* border: 1px solid red; */
-  background-color: #333;
-  cursor: crosshair;
+  /* background-color: #333; */
+
   background-color: black;
   color: white;
 
   font-family: "Roboto", sans-serif;
 
   display: flex;
+
+  padding-bottom: 5rem;
 }
 
 .hero-heading > h1 {
@@ -21,6 +23,8 @@
   align-items: center;
   padding: 1rem;
   gap: 2rem;
+
+  margin-top: 4rem;
 }
 
 .job,
@@ -36,17 +40,9 @@
   flex: 1;
 }
 
-.title {
-  font-size: medium;
-  font-weight: 500;
-}
-
-.activity {
-  font-size: medium;
-  font-weight: 500;
-}
-
 .activity {
   width: 40%;
   border: 1px solid red;
+
+  margin-top: 10rem;
 }
