@@ -10,11 +10,24 @@
   display: flex;
 
   padding-bottom: 5rem;
+
+  /* max-height: 70%;
+  min-height: 70%; */
+}
+
+.hero-heading {
+  min-width: 70%;
+  max-width: 70%;
+
+  /* word-break; */
+  white-space: nowrap;
 }
 
 .hero-heading > h1 {
-  font-size: 7em;
+  font-size: 6.5em;
   font-weight: 200;
+  max-height: 70%;
+  min-height: 70%;
 }
 
 .work {
@@ -25,6 +38,9 @@
   gap: 2rem;
 
   margin-top: 4rem;
+
+  max-height: 30%;
+  min-height: 30%;
 }
 
 .job,
@@ -41,7 +57,8 @@
 }
 
 .activity {
-  width: 40%;
+  max-width: 30%;
+  min-width: 30%;
   border: 1px solid red;
 
   margin-top: 10rem;

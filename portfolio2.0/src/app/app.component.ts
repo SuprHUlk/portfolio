@@ -11,5 +11,5 @@ import { HighlightsComponent } from './highlights/highlights.component';
   imports: [RouterOutlet, HeaderComponent, HighlightsComponent],
 })
 export class AppComponent {
-  title = 'portfolio2.0';
+  title = 'Suprhulk';
 }
