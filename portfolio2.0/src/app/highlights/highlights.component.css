@@ -195,3 +195,190 @@
   background-clip: text;
   color: transparent; /* Make the text color transparent to show the gradient */
 }
+
+#linktree {
+  max-width: max-content;
+  min-width: none;
+}
+
+#linktree {
+  max-width: max-content;
+  min-width: none;
+}
+
+#linktree > .container {
+  background: linear-gradient(
+    45deg,
+    hsl(189deg 100% 20%) 0%,
+    hsl(184deg 100% 27%) 8%,
+    hsl(172deg 100% 33%) 15%,
+    hsl(157deg 100% 41%) 23%,
+    hsl(138deg 100% 48%) 31%,
+    hsl(92deg 100% 48%) 38%,
+    hsl(74deg 100% 44%) 46%,
+    hsl(58deg 100% 42%) 54%,
+    hsl(46deg 100% 47%) 62%,
+    hsl(39deg 100% 50%) 69%,
+    hsl(33deg 100% 50%) 77%,
+    hsl(26deg 100% 50%) 85%,
+    hsl(18deg 100% 50%) 92%,
+    hsl(0deg 100% 50%) 100%
+  );
+  max-width: 23rem;
+  min-width: 23rem;
+
+  min-height: 30rem;
+  max-height: 30rem;
+}
+
+.quote {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#linktree > .text-cont a {
+  font-weight: 1000;
+  text-decoration: none;
+  background-image: linear-gradient(
+    135deg,
+    hsl(189deg 100% 20%) 0%,
+    hsl(184deg 100% 27%) 8%,
+    hsl(172deg 100% 33%) 15%,
+    hsl(157deg 100% 41%) 23%,
+    hsl(138deg 100% 48%) 31%,
+    hsl(92deg 100% 48%) 38%,
+    hsl(74deg 100% 44%) 46%,
+    hsl(58deg 100% 42%) 54%,
+    hsl(46deg 100% 47%) 62%,
+    hsl(39deg 100% 50%) 69%,
+    hsl(33deg 100% 50%) 77%,
+    hsl(26deg 100% 50%) 85%,
+    hsl(18deg 100% 50%) 92%,
+    hsl(0deg 100% 50%) 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Make the text color transparent to show the gradient */
+}
+
+/* @media (max-width: 600px) {
+  .highlights-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0;
+
+    min-height: 100vh;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  #instagram,
+  #content {
+    min-width: 100vw;
+    min-height: 100%;
+  }
+
+  .row {
+    gap: 0;
+    margin: 0;
+
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-width: 200vw;
+    align-items: stretch;
+  }
+
+  .container-wrapper {
+    scroll-snap-align: start;
+  }
+
+  .container {
+    min-height: 90%;
+  }
+
+  .text-cont {
+    margin: 0;
+    min-height: 10%;
+
+    justify-content: center;
+  }
+
+  .large {
+    width: 100%;
+    align-self: stretch;
+  }
+} */
+
+@media (max-width: 600px) {
+  .highlights-wrapper {
+    display: flex;
+    /* flex-direction: column; */
+
+    padding: 1rem 0;
+    padding-bottom: 0;
+
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    overflow-x: auto;
+
+    width: 90%;
+    margin: auto;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .row {
+    display: block;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+
+    overflow-y: scroll;
+
+    min-width: 100%;
+    align-items: stretch;
+
+    scroll-snap-align: start;
+  }
+
+  .container,
+  #linktree > .container {
+    min-height: calc(90vh - 0.5rem + 0.5px);
+    max-height: calc(90vh - 0.5rem + 0.5px);
+  }
+
+  .text-cont {
+    margin: 0;
+    min-height: calc(10vh - 0.5rem + 0.5px);
+
+    justify-content: center;
+  }
+
+  #content > .container * {
+    width: 80%;
+    margin: auto;
+  }
+
+  .large {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  #technology {
+    /* border: 1px solid red; */
+    /* gap: 2rem; */
+    width: 100%;
+  }
+
+  #technology .languages,
+  #technology .tools {
+    flex-wrap: wrap;
+  }
+}

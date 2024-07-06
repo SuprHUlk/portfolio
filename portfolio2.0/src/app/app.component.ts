@@ -12,4 +12,12 @@ import { HighlightsComponent } from './highlights/highlights.component';
 })
 export class AppComponent {
   title = 'Suprhulk';
+
+  isLoading: boolean = false;
+
+  setIsLoading(isLoading: boolean) {
+    setTimeout(() => {
+      this.isLoading = isLoading;
+    }, 1500);
+  }
 }
