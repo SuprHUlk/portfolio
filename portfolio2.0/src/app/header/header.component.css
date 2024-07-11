@@ -7,20 +7,29 @@
   display: flex;
 
   padding-bottom: 5rem;
+
+  width: 85%;
+  margin: auto;
+
+  padding-top: 3rem;
 }
 
 .hero-heading {
   min-width: 70%;
   max-width: 70%;
 
-  white-space: nowrap;
+  /* white-space: nowrap; */
+
+  /* border: 1px solid red; */
 }
 
 .hero-heading > h1 {
-  font-size: 6.5em;
+  /* font-size: 6.5em; */
+  font-size: clamp(4em, calc(1em + 6.5vw), 6.5em);
   font-weight: 200;
-  max-height: 70%;
-  min-height: 70%;
+  max-height: 10rem;
+  min-height: 10rem;
+  /* border: 1px solid red; */
 }
 
 .work {
@@ -30,10 +39,7 @@
   padding: 1rem;
   gap: 2rem;
 
-  margin-top: 4rem;
-
-  max-height: 30%;
-  min-height: 30%;
+  margin-top: 7rem;
 }
 
 .job,
@@ -51,7 +57,26 @@
   max-width: 30%;
   min-width: 30%;
 
-  margin-top: 10rem;
+  /* margin-top: 10rem; */
+
+  border: 1px solid red;
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .header-wrapper {
+    flex-direction: column;
+
+    padding-bottom: 0;
+  }
+
+  .hero-heading {
+    min-width: 100%;
+  }
+
+  .activity {
+    min-width: 100%;
+    min-height: 10rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -61,6 +86,8 @@
     min-height: 100vh;
 
     scroll-snap-type: x mandatory;
+
+    width: 100%;
   }
 
   .section {

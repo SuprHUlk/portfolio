@@ -105,13 +105,16 @@
 }
 
 #content > .container > h1 {
-  font-size: 5em;
+  font-size: clamp(1em, calc(5em + 5.5vw), 4em);
   font-weight: 200;
   color: white;
 }
 
+/* 212.96 96 */
+
 #content > .container > p {
   font-size: larger;
+  font-size: clamp(1em, calc(1em + 1.5vw), calc(1em + 0.25vw));
   color: white;
 
   line-height: 1.4;
@@ -198,12 +201,6 @@
 
 #linktree {
   max-width: max-content;
-  min-width: none;
-}
-
-#linktree {
-  max-width: max-content;
-  min-width: none;
 }
 
 #linktree > .container {
@@ -264,55 +261,39 @@
   color: transparent; /* Make the text color transparent to show the gradient */
 }
 
-/* @media (max-width: 600px) {
-  .highlights-wrapper {
-    display: flex;
-    flex-direction: row;
-
-    padding: 0;
-
-    min-height: 100vh;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-  }
-
-  #instagram,
-  #content {
-    min-width: 100vw;
-    min-height: 100%;
-  }
-
+@media (min-width: 601px) and (max-width: 1200px) {
   .row {
-    gap: 0;
-    margin: 0;
-
     flex-direction: column;
+    align-items: flex-start;
 
-    min-height: 100vh;
-    min-width: 200vw;
-    align-items: stretch;
+    gap: 1rem;
+    margin: 0 3rem 0 3rem;
   }
 
-  .container-wrapper {
-    scroll-snap-align: start;
+  #content,
+  #linktree,
+  #linktree > .container {
+    min-width: 100%;
   }
 
-  .container {
-    min-height: 90%;
+  #technology {
+    align-self: flex-start;
   }
 
-  .text-cont {
-    margin: 0;
-    min-height: 10%;
-
-    justify-content: center;
-  }
-
-  .large {
+  #technology .languages-wrapper,
+  #technology .tools-wrapper {
     width: 100%;
-    align-self: stretch;
+    margin: 0;
   }
-} */
+
+  #technology .container {
+    padding: 1rem 0;
+  }
+
+  #technology .text-cont {
+    margin-top: 1rem;
+  }
+}
 
 @media (max-width: 600px) {
   .highlights-wrapper {

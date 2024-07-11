@@ -9,12 +9,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   letters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  heroHeading: string = 'I enjoy creating mobile products.';
   headings: string[] = [
-    'I enjoy creating expressive UI.',
+    'I enjoy creating intuitive UI.',
     'I enjoy creating robust backends.',
     'I enjoy solving problems.',
   ];
+  heroHeading: string = '';
 
   ngOnInit() {
     let idx = 0;
