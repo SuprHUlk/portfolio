@@ -31,7 +31,19 @@ export class ProjectsComponent {
 
   addMouseOverEvent(element: any) {
     this.renderer.listen(element, 'mouseover', (event) => {
-      console.log(event);
+      console.log(getComputedStyle(this.imgCont).top);
+
+      this.renderer.setStyle(this.imgCont, 'top', '0');
+
+      this.renderer.setStyle(
+        this.imgCont,
+        'top',
+        'calc(' +
+          element.getBoundingClientRect().top +
+          'px + ' +
+          getComputedStyle(this.imgCont).top +
+          ')'
+      );
 
       this.projectList.forEach((project: any) => {
         if (project !== element) {

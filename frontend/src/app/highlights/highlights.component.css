@@ -344,7 +344,7 @@
 
   #content > .container * {
     width: 80%;
-    margin: auto;
+    margin: 1rem auto;
   }
 
   .large {
