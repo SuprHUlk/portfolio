@@ -12,7 +12,7 @@ export class HighlightsService {
   getQuote(): Observable<Quote> {
     return this.http
       .get<any>(
-        'https://raw.githubusercontent.com/mudroljub/programming-quotes-api/master/Data/quotes.json'
+        'https://programming-quotes-api.herokuapp.com/quotes/random'
       )
       .pipe(map((data: any) => this.selectQuote(data)));
   }
