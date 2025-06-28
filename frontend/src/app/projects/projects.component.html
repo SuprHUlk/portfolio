@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <p class="description">Projects</p>
+
+  <div class="projects">
+    @for (project of projectsList; track $index) {
+    <div class="project">
+      <h1 class="title">{{ project.title }}</h1>
+      <p class="description">{{ project.number }}</p>
+    </div>
+    }
+  </div>
+  <div class="img-cont">
+    <img src="1.gif" alt="" />
+  </div>
+</div>

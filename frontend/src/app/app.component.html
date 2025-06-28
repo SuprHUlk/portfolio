@@ -1,0 +1,11 @@
+<div [class.loading]="!isLoading" class="wrapper">
+  <div [class.loading]="isLoading" class="loader">
+    <p id="message">Loading..</p>
+  </div>
+  <app-header [class.loading]="!isLoading"></app-header>
+  <app-highlights
+    [class.loading]="!isLoading"
+    (isLoading)="setIsLoading($event)"
+  ></app-highlights>
+  <app-projects [class.loading]="!isLoading"></app-projects>
+</div>
