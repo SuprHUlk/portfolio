@@ -12,6 +12,7 @@ import { createServer } from "node:http";
 import Activity from "./models/Activity";
 import { Server, Socket } from "socket.io";
 import cors from "cors";
+import logger from "./logger";
 
 const app = express();
 app.use(cors());
@@ -64,12 +65,19 @@ client.on("presenceUpdate", (_, newP: Presence | null) => {
       };
 
       listners.forEach((listner) => {
-        console.log("sending");
+        logger.info(
+          "sending to: " + listner.id + " activity: " + JSON.stringify(activity)
+        );
         listner.emit("activity", activity);
       });
     } else {
       listners.forEach((listner) => {
-        console.log("sending");
+        logger.info(
+          "sending to: " +
+            listner.id +
+            " activity: " +
+            JSON.stringify(defaultActivity)
+        );
         listner.emit("activity", defaultActivity);
       });
     }
@@ -90,13 +98,19 @@ function getUrl(asset: RichPresenceAssets | null): string {
 }
 
 io.on("connection", (socket) => {
-  console.log("Connection made: " + socket.id);
+  logger.info("Connection made: " + socket.id);
   listners.set(socket.id, socket);
   setTimeout(() => {
+    logger.info(
+      "sending to: " +
+        socket.id +
+        " activity: " +
+        JSON.stringify(defaultActivity)
+    );
     socket.emit("activity", defaultActivity);
   }, 100);
   socket.on("disconnect", () => {
-    console.log("Disconnected: " + socket.id);
+    logger.info("Disconnected: " + socket.id);
     listners.delete(socket.id);
   });
 });
@@ -109,5 +123,5 @@ app.get("/", (_, res: any) => {
 });
 
 server.listen(port, () => {
-  console.log("Listening on port: " + port);
+  logger.info("Listening on port: " + port);
 });
