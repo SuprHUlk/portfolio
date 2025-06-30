@@ -3,11 +3,10 @@ import { HighlightsService } from '../../services/highlights.service';
 import { Quote } from '../../models/quote';
 
 @Component({
-  selector: 'app-highlights',
-  standalone: true,
-  imports: [],
-  templateUrl: './highlights.component.html',
-  styleUrl: './highlights.component.css',
+    selector: 'app-highlights',
+    imports: [],
+    templateUrl: './highlights.component.html',
+    styleUrl: './highlights.component.css'
 })
 export class HighlightsComponent {
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();

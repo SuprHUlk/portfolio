@@ -14,5 +14,23 @@
       </div>
     </div>
   </div>
-  <div class="activity section">Coming Soon</div>
+  <div class="activity section">
+    <p class="activity-type">{{ Type[activity!.type] }}</p>
+    <div class="content">
+      <div class="img-cont">
+        <img src="{{ activity!.imageUrl }}" alt="activity-photo" />
+      </div>
+      <div class="activity-desc">
+        <div class="name-cont">
+          <div class="img-cont">
+            <!-- <p>{{ TypeValues[activity.type] }}</p> -->
+            <img src="{{ TypeValues[activity!.type] }}" alt="" />
+          </div>
+          <p class="name">{{ activity!.name }}</p>
+        </div>
+        <p class="details">{{ activity!.details }}</p>
+        <p class="state">{{ activity!.state }}</p>
+      </div>
+    </div>
+  </div>
 </div>

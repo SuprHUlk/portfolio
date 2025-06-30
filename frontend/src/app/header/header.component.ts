@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ActivityService } from '../../services/activity.service';
+import { Activity, Type, TypeValues } from '../../models/activity';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HeaderComponent {
   letters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -15,6 +17,12 @@ export class HeaderComponent {
     'I enjoy solving problems.',
   ];
   heroHeading: string = '';
+
+  activity: Activity | null = null;
+  Type = Type;
+  TypeValues = TypeValues;
+
+  constructor(private activityService: ActivityService) {}
 
   ngOnInit() {
     let idx = 0;
@@ -77,5 +85,10 @@ export class HeaderComponent {
     };
 
     cycleHeadings();
+
+    this.activityService.getActivity().subscribe((res: Activity) => {
+      console.log(res);
+      this.activity = res;
+    });
   }
 }
