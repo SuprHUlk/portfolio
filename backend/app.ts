@@ -15,20 +15,27 @@ import cors from "cors";
 import logger from "./logger";
 
 const app = express();
+
 app.use(cors());
 
 const server = createServer(app);
-const io = new Server(server);
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 const port = process.env.PORT;
 const token = process.env.DISCORD_BOT_TOKEN;
 const userId: string = process.env.USER_ID!;
 
 const defaultActivity: Activity = {
-  name: "Sleep",
-  type: 0,
-  details: null,
-  state: null,
+  name: "Sleeping",
+  type: 6,
+  details: "In bed",
+  state: "Zzzz",
   imageUrl: process.env.DEFAULT_ACTIVITY_IMAGE_URL!,
 };
 
@@ -40,6 +47,56 @@ const client = new Client({
   ],
 });
 
+async function pollUserPresence(): Promise<Activity | null> {
+  let userPresence: Presence | null = null;
+
+  for (const [_, guild] of client.guilds.cache) {
+    const member = await guild.members.fetch(userId).catch(() => null);
+    if (member?.presence) {
+      userPresence = member.presence;
+      break;
+    }
+  }
+
+  if (userPresence != null && userPresence.activities.length != 0) {
+    return getActivity(userPresence);
+  }
+
+  return null;
+}
+
+function getActivity(presence: Presence): Activity {
+  const curActivity = presence.activities[0];
+  const name = curActivity.name;
+  const type = curActivity.type;
+  const details = curActivity.details;
+  const state = curActivity.state;
+  const imageUrl = getUrl(curActivity.assets);
+
+  const activity: Activity = {
+    name,
+    type,
+    details,
+    state,
+    imageUrl,
+  };
+
+  return activity;
+}
+
+function getUrl(asset: RichPresenceAssets | null): string {
+  if (asset === null || asset === undefined) return "";
+
+  const imageUrl =
+    asset.largeImage !== null
+      ? asset.largeImageURL()
+      : asset.smallImage !== null
+      ? asset.smallImageURL()
+      : "";
+
+  return imageUrl ?? "";
+}
+
 client.once(Events.ClientReady, (readyClient) => {
   console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
@@ -49,21 +106,7 @@ const listners = new Map<string, Socket>();
 client.on("presenceUpdate", (_, newP: Presence | null) => {
   if (newP?.userId == userId) {
     if (newP.activities.length != 0) {
-      const curActivity = newP.activities[0];
-      const name = curActivity.name;
-      const type = curActivity.type;
-      const details = curActivity.details;
-      const state = curActivity.state;
-      const imageUrl = getUrl(curActivity.assets);
-
-      const activity: Activity = {
-        name,
-        type,
-        details,
-        state,
-        imageUrl,
-      };
-
+      const activity = getActivity(newP);
       listners.forEach((listner) => {
         logger.info(
           "sending to: " + listner.id + " activity: " + JSON.stringify(activity)
@@ -84,30 +127,18 @@ client.on("presenceUpdate", (_, newP: Presence | null) => {
   }
 });
 
-function getUrl(asset: RichPresenceAssets | null): string {
-  if (asset === null || asset === undefined) return "";
-
-  const imageUrl =
-    asset.largeImage !== null
-      ? asset.largeImageURL()
-      : asset.smallImage !== null
-      ? asset.smallImageURL()
-      : "";
-
-  return imageUrl ?? "";
-}
-
 io.on("connection", (socket) => {
   logger.info("Connection made: " + socket.id);
   listners.set(socket.id, socket);
-  setTimeout(() => {
+  setTimeout(async () => {
+    let activity = await pollUserPresence();
     logger.info(
       "sending to: " +
         socket.id +
         " activity: " +
-        JSON.stringify(defaultActivity)
+        JSON.stringify(activity == null ? defaultActivity : activity)
     );
-    socket.emit("activity", defaultActivity);
+    socket.emit("activity", activity == null ? defaultActivity : activity);
   }, 100);
   socket.on("disconnect", () => {
     logger.info("Disconnected: " + socket.id);
