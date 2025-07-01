@@ -2,8 +2,8 @@ enum Type {
   Playing = 0,
   Streaming = 1,
   Listening = 2,
-  Custom = 3,
-  Watching = 4,
+  Watching = 3,
+  Custom = 4,
   Competing = 5,
   Sleeping = 6,
 }
