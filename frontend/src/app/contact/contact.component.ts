@@ -22,6 +22,8 @@ export class ContactComponent {
     message: new FormControl('', Validators.required),
   });
 
+  messageSent: boolean = false;
+
   onSubmit() {
     console.log(this.contactForm);
     console.log(this.contactForm.valid);
@@ -36,7 +38,13 @@ export class ContactComponent {
         error: (err) => {
           console.log(err);
         },
-        complete: () => {},
+        complete: () => {
+          this.contactForm.reset();
+          this.messageSent = true;
+          setTimeout(() => {
+            this.messageSent = false;
+          }, 3000);
+        },
       });
     }
   }

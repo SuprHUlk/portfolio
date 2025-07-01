@@ -3,14 +3,14 @@ import { HighlightsService } from '../../services/highlights.service';
 import { Quote } from '../../models/quote';
 
 @Component({
-    selector: 'app-highlights',
-    imports: [],
-    templateUrl: './highlights.component.html',
-    styleUrl: './highlights.component.css'
+  selector: 'app-highlights',
+  imports: [],
+  templateUrl: './highlights.component.html',
+  styleUrl: './highlights.component.css',
 })
 export class HighlightsComponent {
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
-  quote: Quote = { en: '', author: '', id: 0 };
+  quote: Quote = { quote: '', author: '' };
 
   constructor(private highlightsService: HighlightsService) {}
 
@@ -21,9 +21,8 @@ export class HighlightsComponent {
       },
       error: (error) => {
         this.quote = {
-          en: 'Really good programs live forever.',
+          quote: 'Really good programs live forever.',
           author: 'Charles Simonyi',
-          id: 0,
         };
         this.isLoading.emit(true);
       },

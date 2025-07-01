@@ -11,13 +11,13 @@ export class HighlightsService {
 
   getQuote(): Observable<Quote> {
     return this.http
-      .get<any>('https://programming-quotes-api.herokuapp.com/quotes/random')
+      .get<any>('https://programming-quotesapi.vercel.app/api/random')
       .pipe(map((data: any) => this.selectQuote(data)));
   }
 
   selectQuote(data: any): Quote {
     const quote = data[Math.floor(Math.random() * data.length)];
-    if (quote.en.length > 60) {
+    if (quote.quote.length > 60) {
       return this.selectQuote(data);
     }
     return quote;

@@ -1,7 +1,11 @@
 <div class="wrapper">
   <p class="description">Contact</p>
   <div class="container">
-    <div class="art-1"></div>
+    <div class="art-1">
+      @if(messageSent) {
+      <h1>MESSAGE</h1>
+      }
+    </div>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="input-group">
         <label for="name" class="label-title">Name</label>
@@ -57,12 +61,17 @@
       <button class="btn-23">
         <span class="text">Send</span>
         <span aria-hidden="" class="marquee">Send</span>
+        <!-- <div class="loader"></div> -->
       </button>
-      @if( (contactForm.touched || contactForm.dirty ) &&
+      <!-- @if( (contactForm.touched || contactForm.dirty ) &&
       contactForm.get('message')?.hasError('required')) {
       <label class="label-description">Message is required</label>
-      }
+      } -->
     </form>
-    <div class="art-2"></div>
+    <div class="art-2">
+      @if(messageSent) {
+      <h1>SENT!!</h1>
+      }
+    </div>
   </div>
 </div>
