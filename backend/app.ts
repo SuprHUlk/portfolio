@@ -85,7 +85,8 @@ function getActivity(presence: Presence): Activity {
 }
 
 function getUrl(asset: RichPresenceAssets | null): string {
-  if (asset === null || asset === undefined) return "";
+  if (asset === null || asset === undefined)
+    return process.env.NOT_FOUND_IMAGE_URL!;
 
   const imageUrl =
     asset.largeImage !== null
@@ -94,7 +95,7 @@ function getUrl(asset: RichPresenceAssets | null): string {
       ? asset.smallImageURL()
       : "";
 
-  return imageUrl ?? "";
+  return imageUrl ?? process.env.NOT_FOUND_IMAGE_URL!;
 }
 
 client.once(Events.ClientReady, (readyClient) => {
