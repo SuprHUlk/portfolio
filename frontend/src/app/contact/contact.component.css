@@ -1,0 +1,204 @@
+.wrapper {
+  width: 90%;
+  margin: 5rem auto;
+  padding-bottom: 5rem;
+}
+
+.container {
+  margin-top: 2rem;
+
+  display: flex;
+  /* align-items: center; */
+  gap: 3rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.label-title {
+  display: block;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.input-wrapper {
+  margin-top: 0.5rem;
+}
+
+.input-field {
+  display: block;
+  width: 35rem;
+  height: 2.5rem;
+  padding: 1rem;
+  border: 1px solid white;
+  background-color: black;
+  outline: none;
+  color: white;
+}
+
+.label-description {
+  display: block;
+  padding-top: 0.25rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+textarea {
+  width: 20rem;
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.art-1 {
+  /* border: 1px solid red; */
+  min-height: 100%;
+  flex: 1;
+  background: linear-gradient(
+    42deg,
+    rgba(9, 9, 121, 1) 40%,
+    rgba(0, 212, 255, 1) 80%
+  );
+}
+
+.art-2 {
+  /* border: 1px solid red; */
+  min-height: 100%;
+  flex: 1;
+  background: linear-gradient(
+    42deg,
+    rgba(0, 212, 255, 1) 30%,
+    rgba(9, 9, 121, 1) 100%
+  );
+}
+
+.btn-23,
+.btn-23 *,
+.btn-23 :after,
+.btn-23 :before,
+.btn-23:after,
+.btn-23:before {
+  border: 0 solid;
+  width: 100%;
+}
+
+.btn-23 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.btn-23:disabled {
+  cursor: default;
+}
+
+.btn-23:-moz-focusring {
+  outline: auto;
+}
+
+.btn-23 svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-23 [hidden] {
+  display: none;
+}
+
+.btn-23 {
+  /* border-radius: 99rem; */
+  border-width: 2px;
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  position: relative;
+}
+
+.btn-23 span {
+  display: grid;
+  inset: 0;
+  place-items: center;
+  position: absolute;
+  transition: opacity 0.2s ease;
+}
+
+.btn-23 .marquee {
+  --spacing: 5em;
+  --start: 0em;
+  --end: 10em;
+  -webkit-animation: marquee 1s linear infinite;
+  animation: marquee 1s linear infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  opacity: 0;
+  position: relative;
+  text-shadow: #fff var(--spacing) 0, #fff calc(var(--spacing) * -1) 0,
+    #fff calc(var(--spacing) * -2) 0, #fff calc(var(--spacing) * 2) 0,
+    #fff calc(var(--spacing) * 3) 0, #fff calc(var(--spacing) * -3) 0,
+    #fff calc(var(--spacing) * 4) 0, #fff calc(var(--spacing) * -4) 0,
+    #fff calc(var(--spacing) * 5) 0, #fff calc(var(--spacing) * -5) 0,
+    #fff calc(var(--spacing) * 6) 0, #fff calc(var(--spacing) * -6) 0;
+}
+
+.btn-23:hover .marquee {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+  opacity: 1;
+}
+
+.btn-23:hover .text {
+  opacity: 0;
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    transform: translateX(var(--start));
+  }
+
+  to {
+    transform: translateX(var(--end));
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(var(--start));
+  }
+
+  to {
+    transform: translateX(var(--end));
+  }
+}
+
+@media (max-width: 800px) {
+  .art-1,
+  .art-2 {
+    display: none;
+  }
+
+  form {
+    flex: 1;
+  }
+
+  .input-group,
+  .input-field {
+    width: 100%;
+  }
+}

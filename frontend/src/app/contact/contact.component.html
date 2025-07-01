@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <p class="description">Contact</p>
+  <div class="container">
+    <div class="art-1"></div>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="name" class="label-title">Name</label>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            name="name"
+            id="inputname"
+            class="input-field"
+            formControlName="name"
+          />
+        </div>
+        @if( (contactForm.touched || contactForm.dirty ) &&
+        contactForm.get('name')?.hasError('required')) {
+        <label class="label-description">Name is required</label>
+        }
+      </div>
+      <div class="input-group">
+        <label for="email" class="label-title">Email</label>
+        <div class="input-wrapper">
+          <input
+            type="email"
+            name="email"
+            id="inputname"
+            class="input-field"
+            formControlName="email"
+          />
+        </div>
+        @if((contactForm.touched || contactForm.dirty ) &&
+        contactForm.get('email')?.hasError('required')) {
+        <label class="label-description">Email is required</label>
+        } @if((contactForm.touched || contactForm.dirty ) &&
+        contactForm.get('email')?.hasError('email')) {
+        <label class="label-description">Please enter a valid email</label>
+        }
+      </div>
+      <div class="input-group">
+        <label for="message" class="label-title">Message</label>
+        <div class="input-wrapper">
+          <textarea
+            type="email"
+            name="message"
+            id="inputname"
+            class="input-field"
+            formControlName="message"
+          ></textarea>
+        </div>
+        @if( (contactForm.touched || contactForm.dirty ) &&
+        contactForm.get('message')?.hasError('required')) {
+        <label class="label-description">Message is required</label>
+        }
+      </div>
+      <button class="btn-23">
+        <span class="text">Send</span>
+        <span aria-hidden="" class="marquee">Send</span>
+      </button>
+      @if( (contactForm.touched || contactForm.dirty ) &&
+      contactForm.get('message')?.hasError('required')) {
+      <label class="label-description">Message is required</label>
+      }
+    </form>
+    <div class="art-2"></div>
+  </div>
+</div>

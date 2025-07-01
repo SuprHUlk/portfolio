@@ -11,9 +11,7 @@ export class HighlightsService {
 
   getQuote(): Observable<Quote> {
     return this.http
-      .get<any>(
-        'https://programming-quotes-api.herokuapp.com/quotes/random'
-      )
+      .get<any>('https://programming-quotes-api.herokuapp.com/quotes/random')
       .pipe(map((data: any) => this.selectQuote(data)));
   }
 
