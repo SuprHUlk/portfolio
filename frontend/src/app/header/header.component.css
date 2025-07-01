@@ -76,7 +76,7 @@
   margin-top: 1.5rem;
 }
 
-.content .img-cont {
+.content > .img-cont {
   min-width: 10rem;
   width: 10rem;
 }
