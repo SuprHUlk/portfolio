@@ -3,7 +3,7 @@
 
   <div class="projects">
     @for (project of projectsList; track $index) {
-    <div class="project">
+    <div data-id="{{ project.number }}" class="project">
       <h1 class="title">{{ project.title }}</h1>
       <p class="description">{{ project.number }}</p>
     </div>

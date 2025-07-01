@@ -1,16 +1,17 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 
 @Component({
-    selector: 'app-projects',
-    imports: [],
-    templateUrl: './projects.component.html',
-    styleUrl: './projects.component.css'
+  selector: 'app-projects',
+  imports: [],
+  templateUrl: './projects.component.html',
+  styleUrl: './projects.component.css',
 })
 export class ProjectsComponent {
   readonly projectsList = [
-    { title: 'Gradient OS', number: '03', link: '1.gif' },
-    { title: 'Project LIVE', number: '02', link: '1.gif' },
-    { title: 'ChatFlora', number: '01', link: '1.gif' },
+    { title: 'Gradient OS', number: '03', link: 'gradientOS.gif' },
+    { title: 'ChatFlora', number: '02', link: 'chatFlora.gif' },
+    { title: 'TerminalGPT', number: '01', link: 'terminalGPT.gif' },
+    { title: 'Project LIVE', number: '00', link: 'comingSoon.jpg' },
   ];
 
   projectList: any[] = [];
@@ -54,6 +55,10 @@ export class ProjectsComponent {
         this.renderer.setStyle(this.imgCont, 'opacity', '1');
         this.renderer.setStyle(this.imgCont, 'filter', 'blur(0px)');
         this.imgCont.classList.remove('show');
+        this.imgCont.querySelector('img').src =
+          this.projectsList[
+            this.projectsList.length - parseInt(event.target.id) - 1
+          ].link;
         setTimeout(() => {
           this.imgCont.classList.add('show');
         }, 1);
