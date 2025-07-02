@@ -151,7 +151,7 @@ io.on("connection", (socket) => {
 
 client.login(token);
 
-app.get("getQuote", (req, res) => {
+app.get("/getQuote", (req, res) => {
   const quote = selectQuote(quotes);
   logger.info("Selected quote: " + JSON.stringify(quote));
   res.status(200).json(quote);
@@ -159,7 +159,7 @@ app.get("getQuote", (req, res) => {
 
 function selectQuote(data: any): Quote {
   const quote = data[Math.floor(Math.random() * data.length)];
-  if (quote.quote.length > 60) {
+  if (quote.text.length > 60) {
     return selectQuote(data);
   }
   return quote;
