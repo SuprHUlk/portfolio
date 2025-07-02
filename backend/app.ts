@@ -13,6 +13,8 @@ import Activity from "./models/Activity";
 import { Server, Socket } from "socket.io";
 import cors from "cors";
 import logger from "./logger";
+import { quotes } from "./data/quotes";
+import Quote from "./models/Quote";
 
 const app = express();
 
@@ -148,6 +150,20 @@ io.on("connection", (socket) => {
 });
 
 client.login(token);
+
+app.get("getQuote", (req, res) => {
+  const quote = selectQuote(quotes);
+  logger.info("Selected quote: " + JSON.stringify(quote));
+  res.status(200).json(quote);
+});
+
+function selectQuote(data: any): Quote {
+  const quote = data[Math.floor(Math.random() * data.length)];
+  if (quote.quote.length > 60) {
+    return selectQuote(data);
+  }
+  return quote;
+}
 
 //health checkpoint
 app.get("/", (_, res: any) => {
