@@ -10,7 +10,7 @@ import { Quote } from '../../models/quote';
 })
 export class HighlightsComponent {
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
-  quote: Quote = { quote: '', author: '' };
+  quote: Quote = { text: '', author: '' };
 
   constructor(private highlightsService: HighlightsService) {}
 
@@ -21,7 +21,7 @@ export class HighlightsComponent {
       },
       error: (error) => {
         this.quote = {
-          quote: 'Really good programs live forever.',
+          text: 'Really good programs live forever.',
           author: 'Charles Simonyi',
         };
         this.isLoading.emit(true);

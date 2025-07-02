@@ -11,13 +11,13 @@ export class HighlightsService {
 
   getQuote(): Observable<Quote> {
     return this.http
-      .get<any>('https://programming-quotesapi.vercel.app/api/random')
+      .get<any>('https://backend-62924394999.asia-south1.run.app/getQuote')
       .pipe(map((data: any) => this.selectQuote(data)));
   }
 
   selectQuote(data: any): Quote {
     const quote = data[Math.floor(Math.random() * data.length)];
-    if (quote.quote.length > 60) {
+    if (quote.text.length > 60) {
       return this.selectQuote(data);
     }
     return quote;
