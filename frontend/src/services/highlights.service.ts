@@ -11,7 +11,7 @@ export class HighlightsService {
 
   getQuote(): Observable<Quote> {
     return this.http.get<Quote>(
-      'https://backend-62924394999.asia-south1.run.app/getQuote'
+      'https://portfolio-62924394999.asia-south1.run.app/getQuote'
     );
   }
 }
