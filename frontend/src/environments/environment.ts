@@ -1,3 +1,3 @@
 export const environment = {
-  showLogs: true,
+  showLogs: false,
 };
