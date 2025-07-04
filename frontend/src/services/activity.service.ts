@@ -10,10 +10,10 @@ export class ActivityService {
   private socket: Socket;
   private activity$ = new BehaviorSubject<Activity>({
     name: 'Sleep',
-    details: null,
-    state: null,
+    details: 'In bed',
+    state: 'Zzzz',
     type: Type.Sleeping,
-    imageUrl: '',
+    imageUrl: 'https://i.ibb.co/yBqP25z5/good-night.gif',
   });
 
   constructor() {
