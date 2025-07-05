@@ -133,7 +133,8 @@ client.on("presenceUpdate", (_, newP: Presence | null) => {
 io.on("connection", (socket) => {
   logger.info("Connection made: " + socket.id);
   listners.set(socket.id, socket);
-  setTimeout(async () => {
+
+  socket.on("ready", async () => {
     let activity = await pollUserPresence();
     logger.info(
       "sending to: " +
@@ -142,7 +143,8 @@ io.on("connection", (socket) => {
         JSON.stringify(activity == null ? defaultActivity : activity)
     );
     socket.emit("activity", activity == null ? defaultActivity : activity);
-  }, 100);
+  });
+
   socket.on("disconnect", () => {
     logger.info("Disconnected: " + socket.id);
     listners.delete(socket.id);

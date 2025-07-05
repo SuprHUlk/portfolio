@@ -19,6 +19,10 @@ export class ActivityService {
   constructor() {
     this.socket = io('wss://portfolio-62924394999.asia-south1.run.app');
 
+    this.socket.on('connect', () => {
+      this.socket.emit('ready'); // Tell server we're ready to receive data
+    });
+
     this.socket.on('activity', (res: Activity) => {
       console.log(res);
       this.activity$.next(res);
