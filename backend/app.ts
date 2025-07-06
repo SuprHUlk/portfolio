@@ -112,10 +112,11 @@ async function getUrl(
             );
 
         let imageUrl =
-            asset.largeImage ??
-            asset.largeImageURL() ??
-            asset.smallImage ??
-            asset.smallImageURL();
+            asset.largeImage !== null
+                ? asset.largeImageURL()
+                : asset.smallImage !== null
+                ? asset.smallImageURL()
+                : null;
 
         if (!imageUrl) {
             imageUrl = await getImageFromRawg(name);
