@@ -5,6 +5,7 @@ import { environment } from './environments/environment';
 
 if (!environment.showLogs) {
   window.console.log = () => {};
+  window.console.error = () => {};
 }
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>
