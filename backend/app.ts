@@ -10,17 +10,25 @@ import {
 } from "discord.js";
 import { createServer } from "node:http";
 import Activity from "./models/Activity";
-import { Server, Socket } from "socket.io";
+import { Server } from "socket.io";
 import cors from "cors";
 import logger from "./logger";
 import { quotes } from "./data/quotes";
 import Quote from "./models/Quote";
+
+const port = process.env.PORT;
+const token = process.env.DISCORD_BOT_TOKEN;
+const userId: string = process.env.USER_ID || "";
+const rawgApiKey: string = process.env.RAWG_API_KEY || "";
+const rawgBaseUrl: string = process.env.RAWG_BASE_URL || "";
 
 const app = express();
 
 app.use(cors());
 
 const server = createServer(app);
+
+const rawgImageCache = new Map<string, string>();
 
 const io = new Server(server, {
     cors: {
@@ -33,11 +41,6 @@ const io = new Server(server, {
         methods: ["GET", "POST"],
     },
 });
-
-const port = process.env.PORT;
-const token = process.env.DISCORD_BOT_TOKEN;
-const userId: string = process.env.USER_ID!;
-const rawgApiKey: string = process.env.RAWG_API_KEY!;
 
 const defaultActivity: Activity = {
     name: "Sleeping",
@@ -109,11 +112,14 @@ async function getUrl(
             );
 
         let imageUrl =
-            asset.largeImage !== null
-                ? asset.largeImageURL()
-                : asset.smallImage !== null
-                ? asset.smallImageURL()
-                : await getImageFromRawg(name);
+            asset.largeImage ??
+            asset.largeImageURL() ??
+            asset.smallImage ??
+            asset.smallImageURL();
+
+        if (!imageUrl) {
+            imageUrl = await getImageFromRawg(name);
+        }
 
         return imageUrl ?? process.env.NOT_FOUND_IMAGE_URL!;
     } catch (err) {
@@ -124,11 +130,14 @@ async function getUrl(
 
 async function getImageFromRawg(name: string): Promise<string | null> {
     try {
+        const cacheImage = checkCache(name);
+
+        if (cacheImage) {
+            return cacheImage;
+        }
+
         const apiRes = await fetch(
-            "https://api.rawg.io/api/games?key=" +
-                rawgApiKey +
-                "&search=" +
-                name
+            rawgBaseUrl + "?key=" + rawgApiKey + "&search=" + name
         );
         const data = await apiRes.json();
         const res: any[] = data.results;
@@ -141,6 +150,10 @@ async function getImageFromRawg(name: string): Promise<string | null> {
         logger.error("Error in getImageFromRawg", { error: err });
         return null;
     }
+}
+
+function checkCache(name: string): string | undefined {
+    return rawgImageCache.get(name);
 }
 
 client.once(Events.ClientReady, (readyClient) => {
@@ -159,6 +172,8 @@ client.on("presenceUpdate", async (_, newP: Presence | null) => {
     }
 });
 
+client.login(token);
+
 io.on("connection", (socket) => {
     logger.info("Connection made: " + socket.id);
     socket.on("ready", async () => {
@@ -172,8 +187,6 @@ io.on("connection", (socket) => {
         logger.info("Disconnected: " + socket.id);
     });
 });
-
-client.login(token);
 
 app.get("/getQuote", (req, res) => {
     const quote = selectQuote(quotes);

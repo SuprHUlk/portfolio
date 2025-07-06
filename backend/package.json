@@ -1,24 +1,24 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "backend for my portfolio",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./build/app.js",
-    "nm": "nodemon app.ts"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@google-cloud/logging-winston": "^6.0.1",
-    "@types/express": "^5.0.3",
-    "cors": "^2.8.5",
-    "discord.js": "^14.21.0",
-    "dotenv": "^17.0.0",
-    "express": "^5.1.0",
-    "socket.io": "^4.8.1",
-    "ts-node": "^10.9.2",
-    "winston": "^3.17.0"
-  }
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "backend for my portfolio",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "tsc && node ./build/app.js",
+        "nm": "nodemon app.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@google-cloud/logging-winston": "^6.0.1",
+        "@types/express": "^5.0.3",
+        "cors": "^2.8.5",
+        "discord.js": "^14.21.0",
+        "dotenv": "^17.0.0",
+        "express": "^5.1.0",
+        "socket.io": "^4.8.1",
+        "ts-node": "^10.9.2",
+        "winston": "^3.17.0"
+    }
 }
