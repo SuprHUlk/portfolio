@@ -26,7 +26,6 @@ export class ActivityService {
     });
 
     this.socket.on('activity', (res: Activity) => {
-      console.log(res);
       this.activity$.next(res);
     });
   }

@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
 import { Activity, Type, TypeValues } from '../../models/activity';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,10 @@ export class HeaderComponent {
   Type = Type;
   TypeValues = TypeValues;
 
-  constructor(private activityService: ActivityService) {}
+  constructor(
+    private activityService: ActivityService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
     let idx = 0;
@@ -86,9 +90,18 @@ export class HeaderComponent {
 
     cycleHeadings();
 
-    this.activityService.getActivity().subscribe((res: Activity) => {
-      console.log(res);
-      this.activity = res;
+    this.activityService.getActivity().subscribe({
+      next: (res: Activity) => {
+        console.log(res);
+        this.activity = res;
+        this.loadingService.decreaseLoadingCount('header');
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+        console.log('header1');
+      },
     });
   }
 }

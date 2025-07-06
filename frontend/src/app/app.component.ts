@@ -4,6 +4,7 @@ import { HighlightsComponent } from './highlights/highlights.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +21,27 @@ import { FooterComponent } from './footer/footer.component';
 export class AppComponent {
   title = 'Suprhulk';
 
-  isLoading: boolean = true;
+  constructor(private loadingService: LoadingService) {}
 
-  setIsLoading(isLoading: boolean) {
-    setTimeout(() => {
-      this.isLoading = isLoading;
-    }, 1500);
+  isLoading: boolean = false;
+
+  ngOnInit() {
+    this.setIsLoading();
+  }
+
+  setIsLoading() {
+    this.loadingService.getIsLoading$().subscribe({
+      next: (res: boolean) => {
+        console.log(res);
+        this.isLoading = res;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+        if (this.isLoading) {
+        }
+      },
+    });
   }
 }

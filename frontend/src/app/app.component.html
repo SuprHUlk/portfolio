@@ -3,10 +3,7 @@
     <p id="message">Loading..</p>
   </div>
   <app-header [class.loading]="!isLoading"></app-header>
-  <app-highlights
-    [class.loading]="!isLoading"
-    (isLoading)="setIsLoading($event)"
-  ></app-highlights>
+  <app-highlights [class.loading]="!isLoading"></app-highlights>
   <app-projects [class.loading]="!isLoading"></app-projects>
   <app-contact [class.loading]="!isLoading"></app-contact>
   <app-footer [class.loading]="!isLoading"></app-footer>
