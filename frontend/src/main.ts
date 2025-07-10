@@ -3,7 +3,7 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
-if (!environment.showLogs) {
+if (environment.showLogs) {
   window.console.log = () => {};
   window.console.error = () => {};
 }
