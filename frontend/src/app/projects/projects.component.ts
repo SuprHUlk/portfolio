@@ -8,10 +8,26 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
 })
 export class ProjectsComponent {
   readonly projectsList = [
-    { title: 'Gradient OS', number: '03', link: 'gradientOS.gif' },
-    { title: 'ChatFlora', number: '02', link: 'chatFlora.gif' },
-    { title: 'TerminalGPT', number: '01', link: 'terminalGPT.gif' },
-    { title: 'Project LIVE', number: '00', link: 'comingSoon.jpg' },
+    {
+      title: 'ChatFlora',
+      number: '03',
+      img: 'chatFlora.gif',
+      link: 'https://chatflora.suprhulk.com/',
+    },
+    {
+      title: 'GradientOS',
+      number: '02',
+      img: 'gradientOS.gif',
+      link: 'https://gradientos.suprhulk.com/',
+    },
+
+    {
+      title: 'TerminalGPT',
+      number: '01',
+      img: 'terminalGPT.gif',
+      link: 'https://github.com/SuprHUlk/chatGPTFromTerminal',
+    },
+    { title: 'Project LIVE', number: '00', img: 'comingSoon.jpg', link: '' },
   ];
 
   projectList: any[] = [];
@@ -31,8 +47,6 @@ export class ProjectsComponent {
 
   addMouseOverEvent(element: any) {
     this.renderer.listen(element, 'mouseover', (event) => {
-      console.log(getComputedStyle(this.imgCont).top);
-
       this.renderer.setStyle(this.imgCont, 'top', '0');
 
       this.renderer.setStyle(
@@ -58,7 +72,7 @@ export class ProjectsComponent {
         this.imgCont.querySelector('img').src =
           this.projectsList[
             this.projectsList.length - parseInt(event.target.id) - 1
-          ].link;
+          ].img;
         setTimeout(() => {
           this.imgCont.classList.add('show');
         }, 1);

@@ -4,8 +4,20 @@
   <div class="projects">
     @for (project of projectsList; track $index) {
     <div data-id="{{ project.number }}" class="project">
-      <h1 class="title">{{ project.title }}</h1>
-      <p class="description">{{ project.number }}</p>
+      <h1 data-id="{{ project.number }}" class="title">
+        {{ project.title }}
+        <sup data-id="{{ project.number }}">
+          <a
+            data-id="{{ project.number }}"
+            class="fa-solid fa-arrow-up-right-from-square"
+            href="{{ project.link }}"
+            target="_blank"
+          ></a>
+        </sup>
+      </h1>
+      <p data-id="{{ project.number }}" class="description">
+        {{ project.number }}
+      </p>
     </div>
     }
   </div>

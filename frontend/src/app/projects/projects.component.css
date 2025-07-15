@@ -73,7 +73,7 @@ h1.title {
 .img-cont.show {
   display: block;
   opacity: 1;
-  animation: slideUpBounce 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation: slideUpBounce 1s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 img {
@@ -84,7 +84,9 @@ img {
 
 .dim {
   opacity: 0.1;
+
   filter: blur(4px);
+  transition: opacity 1s ease, filter 1s ease;
 }
 
 @media (max-width: 600px) {
