@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Renderer2 } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
 import { Activity, Type, TypeValues } from '../../models/activity';
 import { LoadingService } from '../../services/loading.service';
@@ -25,8 +25,46 @@ export class HeaderComponent {
 
   constructor(
     private activityService: ActivityService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private renderer: Renderer2
   ) {}
+
+  launchEmoji() {
+    const container = document.querySelector(
+      '.activity.section'
+    ) as HTMLElement;
+
+    if (!container || !this.activity) return;
+
+    const emoji = this.renderer.createElement('img');
+    this.renderer.addClass(emoji, 'emoji');
+
+    emoji.src = TypeValues[this.activity.type];
+
+    // Get container width and generate random pixel offset
+    const containerWidth = container.offsetWidth;
+    const randomLeft = Math.random() * containerWidth;
+
+    // Apply pixel-based offset and size to the emoji element
+    emoji.style.position = 'absolute';
+    emoji.style.left = `${randomLeft}px`;
+    emoji.style.width = `${20 + Math.random() * 16}px`;
+    emoji.style.height = `${20 + Math.random() * 16}px`;
+
+    this.renderer.appendChild(container, emoji);
+
+    setTimeout(() => {
+      if (container.contains(emoji)) {
+        this.renderer.removeChild(container, emoji);
+      }
+    }, 2000);
+  }
+
+  startFloatingEmojis() {
+    setInterval(() => {
+      this.launchEmoji();
+    }, Math.random() * 400 + 300); // every 300–700ms
+  }
 
   ngOnInit() {
     let idx = 0;
@@ -103,5 +141,7 @@ export class HeaderComponent {
         console.log('header1');
       },
     });
+
+    this.startFloatingEmojis();
   }
 }
