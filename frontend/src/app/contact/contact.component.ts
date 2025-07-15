@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-contact',
@@ -14,15 +15,16 @@ import { ContactService } from '../../services/contact.service';
   styleUrl: './contact.component.css',
 })
 export class ContactComponent {
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private snackbarService: SnackbarService
+  ) {}
 
   contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', Validators.required),
   });
-
-  messageSent: boolean = false;
 
   onSubmit() {
     console.log(this.contactForm);
@@ -40,10 +42,8 @@ export class ContactComponent {
         },
         complete: () => {
           this.contactForm.reset();
-          this.messageSent = true;
-          setTimeout(() => {
-            this.messageSent = false;
-          }, 3000);
+
+          this.snackbarService.setSnackBar('Message sent!!!');
         },
       });
     }

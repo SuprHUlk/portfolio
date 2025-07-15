@@ -1,11 +1,7 @@
 <div class="wrapper">
   <p class="description">Contact</p>
   <div class="container">
-    <div class="art-1">
-      @if(messageSent) {
-      <h1>MESSAGE</h1>
-      }
-    </div>
+    <div class="art-1"></div>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="input-group">
         <label for="name" class="label-title">Name</label>
@@ -68,10 +64,6 @@
       <label class="label-description">Message is required</label>
       } -->
     </form>
-    <div class="art-2">
-      @if(messageSent) {
-      <h1>SENT!!</h1>
-      }
-    </div>
+    <div class="art-2"></div>
   </div>
 </div>

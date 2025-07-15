@@ -5,6 +5,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingService } from '../services/loading.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,18 @@ import { LoadingService } from '../services/loading.service';
 export class AppComponent {
   title = 'Suprhulk';
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService,
+    private snackbarService: SnackbarService
+  ) {}
 
   isLoading: boolean = false;
+  showSnackbar: boolean = false;
+  snackbarMessage: string = '';
 
   ngOnInit() {
     this.setIsLoading();
+    this.setSnackbar();
   }
 
   setIsLoading() {
@@ -40,6 +47,20 @@ export class AppComponent {
       },
       complete: () => {
         if (this.isLoading) {
+        }
+      },
+    });
+  }
+
+  setSnackbar() {
+    this.snackbarService.getSnackBar$().subscribe({
+      next: (res: string[]) => {
+        if (res.length && res[0].length) {
+          this.showSnackbar = true;
+          this.snackbarMessage = res[0];
+          setTimeout(() => {
+            this.showSnackbar = false;
+          }, 5000);
         }
       },
     });

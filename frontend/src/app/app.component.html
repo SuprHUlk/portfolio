@@ -8,3 +8,7 @@
   <app-contact [class.loading]="!isLoading"></app-contact>
   <app-footer [class.loading]="!isLoading"></app-footer>
 </div>
+
+<div [class.loading]="!isLoading" [class.show]="showSnackbar" id="snackbar">
+  {{ snackbarMessage }}
+</div>
