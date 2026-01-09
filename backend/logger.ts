@@ -3,7 +3,7 @@ import winston from "winston";
 import { Console } from "winston/lib/winston/transports";
 
 const { combine, timestamp, printf, colorize, errors } = winston.format;
-const loggingWinston = new LoggingWinston();
+// const loggingWinston = new LoggingWinston();
 
 // Custom format for console output with colors and better formatting
 const consoleFormat = combine(
