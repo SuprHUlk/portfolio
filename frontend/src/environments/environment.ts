@@ -1,5 +1,5 @@
 export const environment = {
   showLogs: false,
-  basApiUrl: 'https://portfolio-62924394999.asia-south1.run.app',
-  socketBaseApiUrl: 'wss://portfolio-62924394999.asia-south1.run.app',
+  basApiUrl: 'https://portfolio-ayush-rg.azurewebsites.net',
+  socketBaseApiUrl: 'wss://portfolio-ayush-rg.azurewebsites.net',
 };
