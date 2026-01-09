@@ -16,23 +16,23 @@ const consoleFormat = combine(
 );
 
 // File format without colors but with structured JSON
-const fileFormat = combine(
-    timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-    errors({ stack: true }),
-    winston.format.json()
-);
+// const fileFormat = combine(
+//     timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+//     errors({ stack: true }),
+//     winston.format.json()
+// );
 
 const logger = winston.createLogger({
     level: process.env.LOG_LEVEL || "info",
     transports: [
-        new winston.transports.File({
-            filename: "logs.log",
-            format: fileFormat,
-        }),
+        // new winston.transports.File({
+        //     filename: "logs.log",
+        //     format: fileFormat,
+        // }),
         new Console({
             format: consoleFormat,
         }),
-        loggingWinston,
+        // loggingWinston,
     ],
 });
 
