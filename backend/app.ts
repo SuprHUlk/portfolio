@@ -24,7 +24,17 @@ const rawgBaseUrl: string = process.env.RAWG_BASE_URL || "";
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+    "https://www.suprhulk.com",
+    "https://portfolio-suprhulks-projects.vercel.app",
+    "https://portfolio-git-main-suprhulks-projects.vercel.app",
+    "http://localhost:4200",
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+}));
 
 const server = createServer(app);
 
@@ -32,12 +42,7 @@ const rawgImageCache = new Map<string, string>();
 
 const io = new Server(server, {
     cors: {
-        origin: [
-            "https://www.suprhulk.com",
-            "https://portfolio-suprhulks-projects.vercel.app",
-            "https://portfolio-git-main-suprhulks-projects.vercel.app",
-            "http://localhost:4200",
-        ],
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
     },
 });
