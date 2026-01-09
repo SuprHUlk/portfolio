@@ -1,5 +1,5 @@
 import winston from "winston";
-import { LoggingWinston } from "@google-cloud/logging-winston";
+// import { LoggingWinston } from "@google-cloud/logging-winston";
 import { Console } from "winston/lib/winston/transports";
 
 const { combine, timestamp, printf, colorize, errors } = winston.format;
