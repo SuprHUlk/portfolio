@@ -25,7 +25,9 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd ./backend
           npm install
+          tsc && node ./build/app.js
           npm run build --if-present
           npm run test --if-present
 
@@ -62,4 +64,5 @@ jobs:
           app-name: 'portfolio-ayush-rg'
           slot-name: 'Production'
           package: .
+
           
